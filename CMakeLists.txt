@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.14)
 
 # ...
 project(efika
-  VERSION 0.0.1
-  DESCRIPTION ""
-  HOMEPAGE_URL ""
-  LANGUAGES C)
+  VERSION      0.0.1
+  DESCRIPTION  "High performance sparse fixed-radius library"
+  HOMEPAGE_URL "https://github.com/jiverson002/projects/1"
+  LANGUAGES    C)
 
 # Include build configurations (compiler standards, options, etc.)
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND EFIKA_BUILDCONFIG_FILE)
@@ -26,12 +26,11 @@ add_library(${PROJECT_NAME})
 add_library(Efika::efika ALIAS ${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-  SOVERSION     ${PROJECT_VERSION_MAJOR}
-  VERSION       ${PROJECT_VERSION})
+  SOVERSION ${PROJECT_VERSION_MAJOR}
+  VERSION   ${PROJECT_VERSION})
 
 #-------------------------------------------------------------------------------
-# COMPONENT configuration (must be included in this order, so as to correctly
-# build the public header)
+# COMPONENT configuration
 #-------------------------------------------------------------------------------
 foreach(component core impl io)
   FetchContent_Declare(Efika-${component}
@@ -53,7 +52,10 @@ list(TRANSFORM PROJECT_INCLUDE_DIRECTORIES APPEND "/")
 #-------------------------------------------------------------------------------
 # PACKAGE configuration
 #-------------------------------------------------------------------------------
-write_basic_package_version_file(EfikaConfigVersion.cmake
+configure_package_config_file(EfikaConfig.cmake.in cmake/EfikaConfig.cmake
+  INSTALL_DESTINATION lib/cmake/Efika)
+
+write_basic_package_version_file(cmake/EfikaConfigVersion.cmake
   VERSION       ${PROJECT_VERSION}
   COMPATIBILITY SameMajorVersion)
 
@@ -70,14 +72,15 @@ install(TARGETS ${PROJECT_NAME} EXPORT EfikaTargets
 install(EXPORT EfikaTargets
   FILE        EfikaTargets.cmake
   NAMESPACE   Efika::
-  DESTINATION lib/cmake/Efika)
+  DESTINATION lib/cmake/Efika
+  COMPONENT   Efika_Development)
 
 install(DIRECTORY ${PROJECT_INCLUDE_DIRECTORIES}
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   COMPONENT   Efika_Development)
 
 install(
-  FILES       EfikaConfig.cmake
-              ${CMAKE_CURRENT_BINARY_DIR}/EfikaConfigVersion.cmake
+  FILES       ${CMAKE_CURRENT_BINARY_DIR}/cmake/EfikaConfig.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/cmake/EfikaConfigVersion.cmake
   DESTINATION lib/cmake/Efika
   COMPONENT   Efika_Development)
