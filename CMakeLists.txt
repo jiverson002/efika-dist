@@ -8,11 +8,6 @@ project(efika
   HOMEPAGE_URL "https://github.com/jiverson002/projects/1"
   LANGUAGES    C)
 
-# Include build configurations (compiler standards, options, etc.)
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND EFIKA_BUILDCONFIG_FILE)
-  include(${EFIKA_BUILDCONFIG_FILE})
-endif()
-
 # Include required CMake modules
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
