@@ -10,8 +10,8 @@ project(efika
 
 # Include required CMake modules
 include(CMakePackageConfigHelpers)
-include(GNUInstallDirs)
 include(FetchContent)
+include(GNUInstallDirs)
 
 #-------------------------------------------------------------------------------
 # LIBRARY configuration
@@ -37,7 +37,7 @@ foreach(component core impl io)
     PRIVATE $<TARGET_OBJECTS:Efika::${component}>)
 
   list(APPEND PROJECT_INCLUDE_DIRECTORIES
-    $<TARGET_PROPERTY:Efika::${component},INTERFACE_INCLUDE_DIRECTORIES>)
+    ${efika-${component}_SOURCE_DIR}/include)
 endforeach()
 
 # Add trailing '/' to each directory in the list to prevent CMake from appending

@@ -6,6 +6,7 @@ class EfikaConan(ConanFile):
   license = "MIT"
   author = "Jeremy Iverson (jiverson002@csbsju.edu)"
   url = "https://github.com/jiverson002/efika-dist"
+  homepage = "https://github.com/users/jiverson002/projects/1"
   description = "High performance sparse fixed-radius library."
   topics = ("hpc", "sfr", "apss")
   settings = "os", "compiler", "build_type", "arch"
@@ -20,7 +21,7 @@ class EfikaConan(ConanFile):
     "visibility": "hidden"
   }
   exports = ["LICENSE"]
-  exports_sources = "CMakeLists.txt", "EfikaConfig.cmake.in", "include"
+  exports_sources = "CMakeLists.txt", "EfikaConfig.cmake.in"
 
   def build(self):
     cmake = CMake(self)
