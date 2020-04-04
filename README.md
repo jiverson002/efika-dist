@@ -27,6 +27,11 @@ If you handle multiple dependencies in your project is better to add a *conanfil
     [requires]
     efika/0.0.1@jiverson002/unstable
 
+    [options]
+    efika:shared=True # False
+    efika:fPIC=False # True
+    efika:visibility="default" # "hidden"
+
     [generators]
     cmake
 
@@ -49,13 +54,6 @@ the package to the local system cache. This includes downloading dependencies
 from "build_requires" and "requires", and then running the build() method.
 
     $ conan create . jiverson002/unstable
-
-### Available Options
-| Option        | Default  | Possible Values       |
-| ------------- |:-------- |:---------------------:|
-| shared        | False    | [True, False]         |
-| fPIC          | True     | [True, False]         |
-| visibility    | "hidden" | ["hidden", "default"] |
 
 ## Conan Recipe License
 
