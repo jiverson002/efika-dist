@@ -7,7 +7,7 @@ class EfikaConan(ConanFile):
   author = "Jeremy Iverson (jiverson002@csbsju.edu)"
   url = "https://github.com/jiverson002/efika-dist"
   homepage = "https://github.com/users/jiverson002/projects/1"
-  description = "High performance sparse fixed-radius library."
+  description = "High performance sparse fixed-radius library for sparse high-dimensional data."
   topics = ("hpc", "sfr", "apss")
   settings = "os", "compiler", "build_type", "arch"
   options = {

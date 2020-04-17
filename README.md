@@ -2,7 +2,7 @@
 
 ## Conan package recipe for [*Efika*](https://github.com/jiverson002/efika-dist.git)
 
-High performance sparse fixed-radius library for high-dimensional data.
+High performance sparse fixed-radius library for sparse high-dimensional data.
 
 The packages generated with this **conanfile** can be found on [Bintray](https://bintray.com/jiverson002/public-conan/efika%3Ajiverson002).
 

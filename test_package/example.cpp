@@ -1,6 +1,6 @@
 #include <iostream>
-#include "efika/impl.h"
+#include "efika/apss.h"
 
 int main() {
-  EFIKA_Impl_sfrkd(0.0, NULL, NULL, NULL);
+  EFIKA_apss_bruteforce(0.0, NULL, NULL);
 }
