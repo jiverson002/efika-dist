@@ -30,9 +30,10 @@ set_target_properties(${PROJECT_NAME}
 #-------------------------------------------------------------------------------
 include(FetchContent)
 
-set(deps "apss;core;io")
+set(EFIKA_CORE_COMPONENTS "apss;core;io" CACHE STRING "The core components to be included when
+building the library")
 
-foreach(dep ${deps})
+foreach(dep ${EFIKA_CORE_COMPONENTS})
   if (dep STREQUAL "apss")
     FetchContent_Declare(${library_NAME}-${dep}
       GIT_REPOSITORY https://github.com/jiverson002/${library_NAME}-${dep}.git
