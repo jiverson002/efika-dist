@@ -25,8 +25,11 @@ class EfikaConan(ConanFile):
 
   def build(self):
     cmake = CMake(self)
+    # BUG: Conan was not explicitly adding -fPIC, so we do it here.
+    if self.settings.compiler != 'Visual Studio':
+        cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE"] = self.options.fPIC
     cmake.definitions["CMAKE_C_VISIBILITY_PRESET"] = self.options.visibility
-    #cmake.verbose = True
+    cmake.verbose = True
     cmake.configure()
     cmake.build()
     #cmake.test()

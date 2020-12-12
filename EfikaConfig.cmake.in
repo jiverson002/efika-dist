@@ -1,1 +1,11 @@
-include(${CMAKE_CURRENT_LIST_DIR}/EfikaTargets.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/@Library_NAME@Targets.cmake)
+
+include(CMakeFindDependencyMacro)
+
+foreach(component ${@Library_NAME@_FIND_COMPONENTS})
+  find_dependency(${component}
+    PATHS ${CMAKE_CURRENT_LIST_DIR})
+
+  target_link_libraries(@Library_NAME@::@library_NAME@
+    INTERFACE @Library_NAME@::@library_NAME@-${component})
+endforeach()
